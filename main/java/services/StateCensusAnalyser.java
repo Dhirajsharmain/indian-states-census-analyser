@@ -1,15 +1,21 @@
+/**
+ ****************************************************************************
+ * Purpose: The purpose of this class to load the Indian States Census
+ * Information from a csv file and perform some analysis on data.
+ *
+ * @author Dhiraj and Naziya
+ * @version 1.0
+ * @since 30-06-2021
+ ****************************************************************************
+ */
 package services;
-
-import model.StatesCensusCSVModel;
-
-import java.util.List;
 
 public class StateCensusAnalyser {
 
     public static void main(String[] args) {
         CSVStateCensus csvStateCensus = new CSVStateCensus();
-        List<StatesCensusCSVModel> statesCensus;
+        int statesCensus;
         statesCensus = csvStateCensus.readStatesCensusCsv("E:\\BridgeLabs Training\\Java\\Advance Java\\IndianStatesCensusAnalyser\\src\\main\\resources\\StateCensusData.csv");
-        statesCensus.forEach(System.out::println);
+        System.out.println(statesCensus);
     }
 }

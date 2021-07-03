@@ -17,14 +17,14 @@ public class StateCensusAnalyserTest {
 
     @Test
     public void givenCSVFile_shouldReturnNumberOfRecords() {
-        int result = csvStateCensus.readStatesCensusCsv("src/main/resources/StateCensusData.csv").size();
+        int result = csvStateCensus.readStatesCensusCsv("src/main/resources/StateCensusData.csv");
         Assert.assertEquals(3, result);
     }
 
     @Test
-    public void givenCSVFileIfIncorrect_shouldReturnCustomException() throws CensusAnalyserException {
+    public void givenCSVFileIfIncorrect_shouldReturnCustomException() {
         try {
-            int result = csvStateCensus.readStatesCensusCsv("src/test/java/StateCensusAnalyserTest.java").size();
+            int result = csvStateCensus.readStatesCensusCsv("src/test/java/StateCensusAnalyserTest.java");
             Assert.assertEquals(3, result);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.INCORRECT_FIlE, e.type);
@@ -32,27 +32,27 @@ public class StateCensusAnalyserTest {
     }
 
     @Test
-    public void givenFile_IfIncorrectType_shouldReturnCustomException() throws CensusAnalyserException {
+    public void givenFile_IfIncorrectType_shouldReturnCustomException() {
         try {
-            int result = csvStateCensus.readStatesCensusCsv("src/test/java/StateCensusAnalyserTest.txt").size();
+            int result = csvStateCensus.readStatesCensusCsv("src/test/java/StateCensusAnalyserTest.txt");
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.FILE_TYPE_INCORRECT, e.type);
         }
     }
 
     @Test
-    public void givenFile_IfCorrectTypeButImproperDelimiter_shouldReturnCustomException() throws CensusAnalyserException {
+    public void givenFile_IfCorrectTypeButImproperDelimiter_shouldReturnCustomException() {
         try {
-            int result = csvStateCensus.readStatesCensusCsv("src/main/resources/StateCensusImproperDelimiter.csv").size();
+            int result = csvStateCensus.readStatesCensusCsv("src/main/resources/StateCensusImproperDelimiter.csv");
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.IMPROPER_DELIMITER, e.type);
         }
     }
 
     @Test
-    public void givenFile_IfCorrectTypeButHeaderIncorrect_shouldReturnCustomException() throws CensusAnalyserException {
+    public void givenFile_IfCorrectTypeButHeaderIncorrect_shouldReturnCustomException() {
         try {
-            int result = csvStateCensus.readStatesCensusCsv("src/main/resources/StateCensusImproperDelimiter.csv").size();
+            int result = csvStateCensus.readStatesCensusCsv("src/main/resources/StateCensusImproperDelimiter.csv");
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.HEADER_IMPROPER, e.type);
         }

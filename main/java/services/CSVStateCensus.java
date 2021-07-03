@@ -1,3 +1,13 @@
+/**
+ ****************************************************************************
+ * Purpose: The purpose of this class to load the Indian States Census
+ * Information from a csv file and perform some analysis on data.
+ *
+ * @author Dhiraj and Naziya
+ * @version 1.0
+ * @since 30-06-2021
+ ****************************************************************************
+ */
 package services;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -15,7 +25,12 @@ import java.util.List;
 
 public class CSVStateCensus {
 
-    public List<StatesCensusCSVModel> readStatesCensusCsv(String filePath){
+    /**
+     * Method is loading CSV data from file,
+     * @param filePath : file path
+     * @return : no of entities in file
+     */
+    public int readStatesCensusCsv(String filePath){
         Path path = Paths.get(filePath);
         try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 
@@ -28,7 +43,7 @@ public class CSVStateCensus {
                     .build();
 
             List<StatesCensusCSVModel> statesCensus = csvToBean.parse();
-            return statesCensus;
+            return statesCensus.size();
         } catch (IOException e) {
             throw new ClassCastException(e.getMessage());
         }
